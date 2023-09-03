@@ -31,6 +31,5 @@ function readAccountsFile()
    })
   .catch((e) => console.error(e));
 
-  // test
    return accounts;
 }

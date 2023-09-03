@@ -22,8 +22,7 @@ function populateLoginAccounts()
 //======================================================================================================================
 function readAccountsFile()
 {
-    var accounts;
-
+    var accounts = [];
     fetch("./Resources/Accounts.txt")
   .then((res) => res.text())
   .then((text) => {
@@ -31,5 +30,5 @@ function readAccountsFile()
    })
   .catch((e) => console.error(e));
 
-   return accounts;
+  return accounts;
 }

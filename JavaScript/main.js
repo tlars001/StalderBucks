@@ -1,6 +1,10 @@
+var jsonData = [];
+
 //======================================================================================================================
-function login()
+function login(index)
 {
+  localStorage.setItem('account', JSON.stringify(jsonData[index]));
+  location.href = "./Resources/AccountPage.html";
 }
 
 //======================================================================================================================
@@ -9,37 +13,40 @@ function createAccount()
 }
 
 //======================================================================================================================
-function populateLoginAccounts()
+async function populateLoginAccounts()
 {
     var accountList = document.getElementById("accountOptions");
-    var accounts = readAccountsFile();
+    await readAccountsFile();
 
-    //console.log(accounts[0]);
-
-    accounts.forEach(element => {
-        accountList.appendChild(element);
-    });
+    for (var i = 0; i < jsonData.length; i++)
+    {
+      accountList.innerHTML += '<a onclick="login(' + i + ')">' + jsonData[i][0] + '</a>';
+    }
 }
 
 //======================================================================================================================
-function readAccountsFile()
+async function readAccountsFile()
 {
-    var accounts = [];
-//    fetch('https://api.jsonserve.com/fva5P-', { mode: 'no-cors'})
-//  .then((response) => console.log(response))
-//  .catch((e) => console.error(e));
+  const url = 'https://api.npoint.io/fdefa62193acc0f3cd7c';
 
-const url = 'https://api.jsonserve.com/fva5P-';
+    await fetch(url)
+  .then((response) => {return response.json()})
+  .then((data) => {
+    for(var i = 0; i < data.Accounts.length; i++)
+    {
+      jsonData.push(Object.values(data.Accounts[i]));
+    }
+  })
+  .catch((e) => console.error(e));
+}
 
-const response = fetch(url, {
-    headers: {
-        'Accept': 'application/json',
-    },
-});
+//======================================================================================================================
+function retrieveAccountInfo()
+{
+  var account = JSON.parse(localStorage.getItem('account'));
+  var accountName = document.getElementById("welcomeHeader");
+  var accountBalance = document.getElementById("accountBalance");
 
-const text = response.text();
-
-console.log(text);
-
-  return accounts;
+  accountName.innerHTML += account[0];
+  accountBalance.innerHTML += account[1];
 }

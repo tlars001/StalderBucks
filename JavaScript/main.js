@@ -14,6 +14,8 @@ function populateLoginAccounts()
     var accountList = document.getElementById("accountOptions");
     var accounts = readAccountsFile();
 
+    //console.log(accounts[0]);
+
     accounts.forEach(element => {
         accountList.appendChild(element);
     });
@@ -23,12 +25,13 @@ function populateLoginAccounts()
 function readAccountsFile()
 {
     var accounts = [];
-    fetch("./Resources/Accounts.txt")
-  .then((res) => res.text())
-  .then((text) => {
-    accounts = text.split("\n");
-   })
-  .catch((e) => console.error(e));
+//    fetch('https://api.jsonserve.com/fva5P-', { mode: 'no-cors'})
+//  .then((response) => console.log(response))
+//  .catch((e) => console.error(e));
+
+fetch('https://api.jsonserve.com/fva5P-')
+.then(data => {console.log(data); return data.json()})
+.then(text => {console.log(text)});
 
   return accounts;
 }

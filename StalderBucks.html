@@ -1,0 +1,39 @@
+<!--****************************************************************************
+Title: StalderBucks
+Author: Trevor Larson
+Completed:
+Summary:
+*****************************************************************************-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Stalder Bucks Bank</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="A basic banking system for simple family use">
+		<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
+		<meta name="author" content="Trevor Larson">
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
+		<!--<link rel="icon" href="Resources/atom.png">-->
+		<!--<link rel="icon" href="Resources/pendulum.jpg">-->
+		<link rel="stylesheet" href="Resources/style.css">
+	</head>
+	<body onload="populateLoginAccounts()">
+        <div id="mainContainer">
+            <h1 id="mainHeader" class="titleHeader">Stalder Bucks Bank</h1>
+            <div class="dropdown">
+                <button class="dropbtn">Login</button>
+                <div id="accountOptions" class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
+              </div>
+            <div class="dropdown">
+                <button id="highScores" class="dropbtn" onclick="createAccount()">Create Account</button>            
+            </div>
+        </div>
+
+	  	<!-- The main file for the program -->
+	  	<script src="JavaScript/main.js"></script>
+	</body>
+</html>

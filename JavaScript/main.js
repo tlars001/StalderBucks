@@ -36,6 +36,7 @@ function createAccount() {
   writeNewAccountData();
 
   nameInput.value = "";
+  nameInput.blur();
   document.getElementById("createAccountDiv").style.display = "none";
   displayNotification("Account created successfully!");
 }
@@ -191,6 +192,7 @@ function deposit() {
   }
 
   writeData();
+  depositInput.blur();
   depositInput.value = "";
   displayNotification("Deposit Successful!");
 }
@@ -214,6 +216,7 @@ function withdraw() {
   }
 
   writeData();
+  withdrawInput.blur();
   withdrawInput.value = "";
   displayNotification("Withdrawal Successful!");
 }
@@ -248,6 +251,7 @@ function transfer() {
   }
 
   writeData();
+  transferInput.blur();
   transferInput.value = "";
   displayNotification("Transfer Successful!");
 }

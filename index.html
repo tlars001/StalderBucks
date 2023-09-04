@@ -4,38 +4,41 @@ Author: Trevor Larson
 *****************************************************************************-->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Stalder Bucks Bank</title>
-		<meta charset="UTF-8">
-		<meta name="description" content="A basic banking system for simple family use">
-		<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
-		<meta name="author" content="Trevor Larson">
-		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
-		<link rel="icon" href="Resources/StalderDollar.png">
-		<link rel="stylesheet" href="Resources/style.css">
-	</head>
-	<body onload="populateLoginAccounts()">
-        <div id="mainContainer">
-            <h1 id="mainHeader" class="titleHeader">Stalder Bucks Bank</h1>
-            <div class="dropdown">
-                <button class="dropbtn">Login</button>
-                <div id="accountOptions" class="dropdown-content">
-                </div>
-              </div>
-            <div class="dropdown">
-                <button id="createAccount" class="dropbtn" onclick="displayCreateAccount()">Create Account</button>            
-            </div>
-			</br>
-			</br>
-			<div id ="createAccountDiv" class="dropdown" style="display: none;">
-				<h3>Enter Name</h3>
-				<input type="text" id="nameInput" maxlength="12" onkeydown="return /[a-z]/i.test(event.key)">
-				<button id="depositButton" onclick="createAccount()">Create Account</button>            
+
+<head>
+	<title>Stalder Bucks Bank</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="A basic banking system for simple family use">
+	<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
+	<meta name="author" content="Trevor Larson">
+	<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
+	<link rel="icon" href="Resources/StalderDollar.png">
+	<link rel="stylesheet" href="Resources/style.css">
+</head>
+
+<body onload="populateLoginAccounts()">
+	<div id="mainContainer">
+		<h1 id="mainHeader" class="titleHeader">Stalder Bucks Bank</h1>
+		<div class="dropdown">
+			<button class="dropbtn">Login</button>
+			<div id="accountOptions" class="dropdown-content">
 			</div>
+		</div>
+		<div class="dropdown">
+			<button id="createAccount" class="dropbtn" onclick="displayCreateAccount()">Create Account</button>
+		</div>
+		</br>
+		</br>
+		<div id="createAccountDiv" class="dropdown" style="display: none;">
+			<h3>Enter Name</h3>
+			<input type="text" id="nameInput" maxlength="12" onkeydown="return /[a-z]/i.test(event.key)">
+			<button id="createAccount" onclick="createAccount()">Create Account</button>
+		</div>
 
-			<h1 id="notification" class="titleHeader"></h1>
-        </div>
+		<h1 id="notification" class="titleHeader"></h1>
+	</div>
 
-	  	<script src="JavaScript/main.js"></script>
-	</body>
+	<script src="JavaScript/main.js"></script>
+</body>
+
 </html>

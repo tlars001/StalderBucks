@@ -1,85 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Stalder Bucks Bank</title>
-		<meta charset="UTF-8">
-		<meta name="description" content="A basic banking system for simple family use">
-		<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
-		<meta name="author" content="Trevor Larson">
-		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
-		<link rel="icon" href="./StalderDollar.png">
-		<link rel="stylesheet" href="../Resources/style.css">
-	</head>
-	<body onload="retrieveAccountInfo()">
-        <div id="mainContainer">
-            <h1 id="welcomeHeader" class="titleHeader">Welcome </h1>
-			<h2 id="accountBalance" class="titleHeader">Account Balance: $</h2>
 
-			<div class="dropdown">
-                <button id="deposit" class="dropbtn" onclick="displayDeposit()">Deposit</button>            
-            </div>
+<head>
+	<title>Stalder Bucks Bank</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="A basic banking system for simple family use">
+	<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
+	<meta name="author" content="Trevor Larson">
+	<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
+	<link rel="icon" href="./StalderDollar.png">
+	<link rel="stylesheet" href="../Resources/style.css">
+</head>
 
-			<div class="dropdown">
-                <button id="withdraw" class="dropbtn" onclick="displayWithdraw()">Withdraw</button>            
-            </div>
+<body onload="initAccountPage()">
+	<div id="mainContainer">
+		<h1 id="welcomeHeader" class="titleHeader">Welcome </h1>
+		<h2 id="accountBalance" class="titleHeader">Account Balance: $</h2>
 
-			<div class="dropdown">
-                <button id="transfer" class="dropbtn" onclick="displayTransfer()">Transfer</button>            
-            </div>
-			</br>
-			</br>
-			<div id ="inputs" class="dropdown">
-				<div id ="depositDiv" class="dropdown" style="display: none;">
-					<input
-					id="depositInput"
-					class="number-input"
-					type="number"
-					min="0"
-					max="1000"
-					step="1"
-					onfocus="this.previousValue = this.value"
-					onkeydown="this.previousValue = this.value"
-					oninput="validity.valid || (value = this.previousValue)"
-					/>
-                	<button id="depositButton" class="button-submit" onclick="deposit()">Deposit</button>            
-            	</div>
+		<div class="dropdown">
+			<button id="deposit" class="dropbtn" onclick="displayDeposit()">Deposit</button>
+		</div>
 
-				<div id ="withdrawDiv" class="dropdown" style="display: none;">
-					<input
-					id="withdrawInput"
-					class="number-input"
-					type="number"
-					min="0"
-					max="1000"
-					step="1"
-					onfocus="this.previousValue = this.value"
-					onkeydown="this.previousValue = this.value"
-					oninput="validity.valid || (value = this.previousValue)"
-					/>
-					<button id="withdrawButton" class="button-submit" onclick="withdraw()">Withdraw</button>            
-				</div>
+		<div class="dropdown">
+			<button id="withdraw" class="dropbtn" onclick="displayWithdraw()">Withdraw</button>
+		</div>
 
-				<div id ="transferDiv" class="dropdown" style="display: none;">
-					<select id="accounts" class="select">
-					</select>
-					<input
-					id="transferInput"
-					class="number-input"
-					type="number"
-					min="0"
-					max="1000"
-					step="1"
-					onfocus="this.previousValue = this.value"
-					onkeydown="this.previousValue = this.value"
-					oninput="validity.valid || (value = this.previousValue)"
-					/>
-					<button id="withdrawButton" class="button-submit" onclick="transfer()">Transfer</button>            
-				</div>
+		<div class="dropdown">
+			<button id="transfer" class="dropbtn" onclick="displayTransfer()">Transfer</button>
+		</div>
+		</br>
+		</br>
+		<div id="inputs" class="dropdown">
+			<div id="depositDiv" class="dropdown" style="display: none;">
+				<input id="depositInput" class="number-input" type="number" min="0" max="1000" step="1"
+					onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)" />
+				<button id="depositButton" class="button-submit" onclick="deposit()">Deposit</button>
 			</div>
-			
-			<h1 id="notification" class="titleHeader"></h1>
-        </div>
 
-	  	<script src="../JavaScript/main.js"></script>
-	</body>
+			<div id="withdrawDiv" class="dropdown" style="display: none;">
+				<input id="withdrawInput" class="number-input" type="number" min="0" max="1000" step="1"
+					onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)" />
+				<button id="withdrawButton" class="button-submit" onclick="withdraw()">Withdraw</button>
+			</div>
+
+			<div id="transferDiv" class="dropdown" style="display: none;">
+				<select id="accounts" class="select">
+				</select>
+				<input id="transferInput" class="number-input" type="number" min="0" max="1000" step="1"
+					onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)" />
+				<button id="withdrawButton" class="button-submit" onclick="transfer()">Transfer</button>
+			</div>
+		</div>
+
+		<h1 id="notification" class="titleHeader"></h1>
+	</div>
+
+	<script src="../JavaScript/main.js"></script>
+</body>
+
 </html>

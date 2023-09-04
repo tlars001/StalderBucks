@@ -7,14 +7,13 @@
 		<meta name="keywords" content="Bank, Bucks, Simple, Stalder">
 		<meta name="author" content="Trevor Larson">
 		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
-		<!--<link rel="icon" href="Resources/atom.png">-->
-		<!--<link rel="icon" href="Resources/pendulum.jpg">-->
+		<link rel="icon" href="./StalderDollar.png">
 		<link rel="stylesheet" href="../Resources/style.css">
 	</head>
 	<body onload="retrieveAccountInfo()">
         <div id="mainContainer">
             <h1 id="welcomeHeader" class="titleHeader">Welcome </h1>
-			<h1 id="accountBalance" class="titleHeader">Account Balance: $</h1>
+			<h2 id="accountBalance" class="titleHeader">Account Balance: $</h2>
 
 			<div class="dropdown">
                 <button id="deposit" class="dropbtn" onclick="displayDeposit()">Deposit</button>            
@@ -33,6 +32,7 @@
 				<div id ="depositDiv" class="dropdown" style="display: none;">
 					<input
 					id="depositInput"
+					class="number-input"
 					type="number"
 					min="0"
 					max="1000"
@@ -41,12 +41,13 @@
 					onkeydown="this.previousValue = this.value"
 					oninput="validity.valid || (value = this.previousValue)"
 					/>
-                	<button id="depositButton" onclick="deposit()">Deposit</button>            
+                	<button id="depositButton" class="button-submit" onclick="deposit()">Deposit</button>            
             	</div>
 
 				<div id ="withdrawDiv" class="dropdown" style="display: none;">
 					<input
 					id="withdrawInput"
+					class="number-input"
 					type="number"
 					min="0"
 					max="1000"
@@ -55,14 +56,15 @@
 					onkeydown="this.previousValue = this.value"
 					oninput="validity.valid || (value = this.previousValue)"
 					/>
-					<button id="withdrawButton" onclick="withdraw()">Withdraw</button>            
+					<button id="withdrawButton" class="button-submit" onclick="withdraw()">Withdraw</button>            
 				</div>
 
 				<div id ="transferDiv" class="dropdown" style="display: none;">
-					<select id="accounts" name="cars">
+					<select id="accounts" class="select">
 					</select>
 					<input
 					id="transferInput"
+					class="number-input"
 					type="number"
 					min="0"
 					max="1000"
@@ -71,14 +73,13 @@
 					onkeydown="this.previousValue = this.value"
 					oninput="validity.valid || (value = this.previousValue)"
 					/>
-					<button id="withdrawButton" onclick="transfer()">Transfer</button>            
+					<button id="withdrawButton" class="button-submit" onclick="transfer()">Transfer</button>            
 				</div>
 			</div>
 			
 			<h1 id="notification" class="titleHeader"></h1>
         </div>
 
-	  	<!-- The main file for the program -->
 	  	<script src="../JavaScript/main.js"></script>
 	</body>
 </html>

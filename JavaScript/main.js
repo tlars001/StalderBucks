@@ -20,21 +20,29 @@ function displayCreateAccount()
 //======================================================================================================================
 function createAccount()
 {
-  var nameInput = document.getElementById("nameInput").value;
+  var nameInput = document.getElementById("nameInput");
+  var nameValue = nameInput.value;
+
+  if (nameValue === "")
+  {
+    displayNotification("Please enter a name.");
+    return;
+  }
 
   for (var i = 0; i < jsonRawData.Accounts.length; i++)
   {
-    if (jsonRawData.Accounts[i].name === nameInput)
+    if (jsonRawData.Accounts[i].name === nameValue)
     {
       displayNotification("Name already exists.");
       return;
     }
   }
 
-  var newAccount = {"name":nameInput,"balance":0};
+  var newAccount = {"name":nameValue,"balance":0};
   jsonRawData.Accounts.push(newAccount);
   writeNewAccountData();
 
+  nameInput.value = "";
   document.getElementById("createAccountDiv").style.display = "none";
   displayNotification("Account created successfully!");
 }
@@ -96,7 +104,7 @@ function retrieveAccountInfo()
   var accountName = document.getElementById("welcomeHeader");
   var accountBalance = document.getElementById("accountBalance");
   accountName.innerHTML = ("Welcome " + jsonRawData.Accounts[currentAccount].name + '!');
-  accountBalance.innerHTML = ("Account Balance: $" + jsonRawData.Accounts[currentAccount].balance);
+  accountBalance.innerHTML = ("Funds: <b>$" + jsonRawData.Accounts[currentAccount].balance + "</b>");
 }
 
 //======================================================================================================================
@@ -112,14 +120,8 @@ function updateJson()
   localStorage.setItem('allData', JSON.stringify(jsonRawData));
 
   fetch(url, {
-     
-    // Adding method type
     method: "POST",
-     
-    // Adding body or contents to send
     body: JSON.stringify(jsonRawData),
-     
-    // Adding headers to the request
     headers: {
         "Content-type": "application/json; charset=UTF-8"
     }
@@ -256,8 +258,14 @@ function displayNotification(input)
 {
   var notification = document.getElementById("notification");
   notification.innerHTML = input;
+  
+  notification.style.transition = 'none';
+  notification.style.opacity = '1';
+  void notification.offsetWidth;
+  notification.style.transition = 'opacity 5s';
+  notification.style.opacity = '0';
 
   setTimeout(function(){
     document.getElementById("notification").innerHTML="";
-    },3000);
+    },5000);
 }

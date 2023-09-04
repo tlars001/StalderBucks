@@ -15,7 +15,67 @@
         <div id="mainContainer">
             <h1 id="welcomeHeader" class="titleHeader">Welcome </h1>
 			<h1 id="accountBalance" class="titleHeader">Account Balance: $</h1>
-                  
+
+			<div class="dropdown">
+                <button id="deposit" class="dropbtn" onclick="displayDeposit()">Deposit</button>            
+            </div>
+
+			<div class="dropdown">
+                <button id="withdraw" class="dropbtn" onclick="displayWithdraw()">Withdraw</button>            
+            </div>
+
+			<div class="dropdown">
+                <button id="transfer" class="dropbtn" onclick="displayTransfer()">Transfer</button>            
+            </div>
+			</br>
+			</br>
+			<div id ="inputs" class="dropdown">
+				<div id ="depositDiv" class="dropdown" style="display: none;">
+					<input
+					id="depositInput"
+					type="number"
+					min="0"
+					max="1000"
+					step="1"
+					onfocus="this.previousValue = this.value"
+					onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)"
+					/>
+                	<button id="depositButton" onclick="deposit()">Deposit</button>            
+            	</div>
+
+				<div id ="withdrawDiv" class="dropdown" style="display: none;">
+					<input
+					id="withdrawInput"
+					type="number"
+					min="0"
+					max="1000"
+					step="1"
+					onfocus="this.previousValue = this.value"
+					onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)"
+					/>
+					<button id="withdrawButton" onclick="withdraw()">Withdraw</button>            
+				</div>
+
+				<div id ="transferDiv" class="dropdown" style="display: none;">
+					<select id="accounts" name="cars">
+					</select>
+					<input
+					id="transferInput"
+					type="number"
+					min="0"
+					max="1000"
+					step="1"
+					onfocus="this.previousValue = this.value"
+					onkeydown="this.previousValue = this.value"
+					oninput="validity.valid || (value = this.previousValue)"
+					/>
+					<button id="withdrawButton" onclick="transfer()">Transfer</button>            
+				</div>
+			</div>
+			
+			<h1 id="notification" class="titleHeader"></h1>
         </div>
 
 	  	<!-- The main file for the program -->

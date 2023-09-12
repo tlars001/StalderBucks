@@ -4,7 +4,7 @@ const url = 'https://api.npoint.io/fdefa62193acc0f3cd7c';
 
 //======================================================================================================================
 function login(index) {
-  localStorage.setItem('allData', JSON.stringify(jsonData));
+  localStorage.setItem('accountValid', JSON.stringify(true));
   localStorage.setItem('account', JSON.stringify(index));
   location.href = "./Resources/AccountPage.html";
 }
@@ -106,14 +106,22 @@ function addAccountPageEvents() {
 }
 
 //======================================================================================================================
-function initAccountPage() {
-  addAccountPageEvents();
-  retrieveAccountInfo();
+async function initAccountPage() {
+  var accountValid = JSON.parse(localStorage.getItem('accountValid'));
+
+  if (accountValid) {
+    await readAccountsFile();
+    addAccountPageEvents();
+    retrieveAccountInfo();
+  }
+  else {
+    // Leave if the selected account was not saved over local storage
+    location.href = "../index.html";
+  }
 }
 
 //======================================================================================================================
 function retrieveAccountInfo() {
-  jsonData = JSON.parse(localStorage.getItem('allData'));
   currentAccount = JSON.parse(localStorage.getItem('account'));
 
   // Convert balance to numerical values
@@ -135,8 +143,6 @@ function writeData() {
 
 //======================================================================================================================
 function updateJson() {
-  localStorage.setItem('allData', JSON.stringify(jsonData));
-
   fetch(url, {
     method: "POST",
     body: JSON.stringify(jsonData),
